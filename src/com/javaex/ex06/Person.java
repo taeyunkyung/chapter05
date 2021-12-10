@@ -39,10 +39,14 @@ public class Person {
 	public void setCompany(String company) {
 		this.company = company;
 	};
-	
+
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", hp=" + hp + ", company=" + company + "]";
+	}
+
+	public String bwrite() {
+		return name + "," + hp + "," + company;
 	}
 
 }

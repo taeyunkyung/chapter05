@@ -36,6 +36,8 @@ public class PhoneApp {
 		}
 
 		br.close();
+		
+		listPrint(pList);
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("데이터를 입력하세요.(종료 q)");
@@ -57,23 +59,26 @@ public class PhoneApp {
 
 		sc.close();
 
+		listPrint(pList);
+
+		Writer fw = new FileWriter("C:\\javaStudy\\file\\PhoneDB3.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
+
+		for (Person print : pList) {			
+			bw.write(print.bwrite());
+			bw.newLine();
+		}
+
+		bw.close();
+	}
+	
+	public static void listPrint(List<Person> pList) {
 		for (int i = 0; i < pList.size(); i++) {
 			System.out.println("이름: " + pList.get(i).getName());
 			System.out.println("핸드폰: " + pList.get(i).getHp());
 			System.out.println("회사: " + pList.get(i).getCompany());
 			System.out.println("");
 		}
-
-		Writer fw = new FileWriter("C:\\javaStudy\\file\\PhoneDB3.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
-
-		for (Person print : pList) {
-			String bwrite = print.getName() + "," + print.getHp() + "," + print.getCompany();
-			bw.write(bwrite);
-			bw.newLine();
-		}
-
-		bw.close();
 	}
 
 }
